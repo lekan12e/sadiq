@@ -20,7 +20,7 @@ const AppleDetails = () => {
   }
 
   // Construct the WhatsApp message
-  const message = `Hello, I am interested in the  ${device.name}.`;
+  const message = `Hello, I am interested in buying the ${device.spec.chipset} ${device.name}.`;
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/2349094029999?text=${encodedMessage}`;
 
