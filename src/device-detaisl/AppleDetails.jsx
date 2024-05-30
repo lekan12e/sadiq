@@ -10,9 +10,9 @@ import XIcon from '@mui/icons-material/X';
 const AppleDetails = () => {
   const { appleid } = useParams();
   const device = Apple.find(device => device.id === parseInt(appleid));
-  const [showPopup, setShowPopup] = useState(false);  // State to manage popup visibility
+  const [showPopup, setShowPopup] = useState(false); 
   const togglePopup = () => {
-    setShowPopup(!showPopup);  // Toggle the visibility
+    setShowPopup(!showPopup); 
   };
 
   if (!device) {

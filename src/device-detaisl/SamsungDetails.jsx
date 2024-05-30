@@ -10,8 +10,7 @@ import XIcon from '@mui/icons-material/X';
 const SamsungDetails = () => {
   const location = useLocation();
   const [device, setDevice] = useState(null);
-  const [showPopup, setShowPopup] = useState(false);  // State to manage popup visibility
-
+  const [showPopup, setShowPopup] = useState(false); 
   useEffect(() => {
     const id = location.pathname.split('/').pop();
     const foundDevice = SamsungData.find(device => device.id === parseInt(id));
@@ -19,28 +18,27 @@ const SamsungDetails = () => {
   }, [location.pathname]);
 
   const togglePopup = () => {
-    setShowPopup(!showPopup);  // Toggle the visibility
+    setShowPopup(!showPopup);  
   };
 
   if (!device) {
     return <h1 className=' flex h-[100vh] text-xl w-full justify-center items-center uppercase tracking-wider font-bold'>Device not found</h1>;
   }
 
-  // Construct the WhatsApp message
   const message = `Hello, I am interested in buying the ${device.spec.ram} ${device.spec.chipset} ${device.name}.`;
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/2349094029999?text=${encodedMessage}`;
 
   return (
-    <div className=' mx-[100px] font-switzer'>
+    <div className='mx-4 sm:mx-[100px] font-switzer'>
       <Navbar />
-      <div className='flex justify-start gap-6 pt-20'>
-        <div className='flex justify-center items-center h-[357px] w-[390px] bg-[#EFEFEF]'>
-            <img className='w-[261px]' src={device.url} alt={device.name} />
+      <div className='flex justify-start gap-6 pt-20 sm:pt-20'>
+        <div className='flex justify-center items-center h-[357px] sm:w-[390px] bg-[#EFEFEF]'>
+            <img className='w-full sm:w-[261px]' src={device.url} alt={device.name} />
         </div>
-        <div className='flex flex-col w-[350px] leading-[25px] text-start py-[17px] justify-between '>
+        <div className='flex flex-col w-full sm:w-[350px] leading-[25px] text-start py-[17px] justify-between'>
             <div>
-                <h2 className=' font-bold'>{device.name}</h2>
+                <h2 className='font-bold'>{device.name}</h2>
                 <p>NAME: <span className='font-bold'>{device.name}</span></p>
                 <p>CHIPSET: <span className='font-bold'>{device.spec.chipset}</span></p>
                 <p>MEMORY: <span className='font-bold'>{device.spec.memory}</span></p>
@@ -51,24 +49,24 @@ const SamsungDetails = () => {
       </div>
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-16 relative rounded-lg shadow-lg">
+          <div className="bg-white p-8 sm:p-16 relative rounded-lg shadow-lg w-full sm:max-w-[400px]">
             <CloseIcon sx={{cursor: 'pointer', width:'24px', position: 'absolute', top: '8px', right: '5px'}} onClick={togglePopup} />
-            <div className='flex flex-col w-[350px] justify-self-center items-center'>
-                <h4 className=' mb-11 font-bold'>Contact us</h4>
-                <a className='mb-6 w-full' target='_blank' href={whatsappUrl}>
-                    <div className='flex flex-row gap-1 bg-green-600 rounded-2xl p-7 w-full justify-center items-start'>
+            <div className='flex flex-col justify-self-center items-center'>
+                <h4 className='mb-6 text-4xl font-[580px]'>Contact us</h4>
+                <a className='mb-4 w-full' target='_blank' href={whatsappUrl}>
+                    <div className='flex flex-row gap-1 bg-green-600 rounded-2xl p-4 w-full justify-center items-start'>
                         <WhatsAppIcon sx={{color: 'white'}} />
                         <p className='text-white'>WhatsApp</p>
                     </div>
                 </a>
-                <a className='mb-6 w-full' target='_blank' href="https://www.instagram.com/oshe.dubai?igsh=OTBqOXFzd2puMW92">
-                    <div className='flex flex-row gap-1 bg-[#E7476E] rounded-2xl p-7 w-full justify-center items-start'>
+                <a className='mb-4 w-full' target='_blank' href="https://www.instagram.com/oshe.dubai">
+                    <div className='flex flex-row gap-1 bg-[#E7476E] rounded-2xl p-4 w-full justify-center items-start'>
                         <InstagramIcon sx={{color: 'white'}} />
                         <p className='text-white'>Instagram</p>
                     </div>
                 </a>
-                <a className='mb-6 w-full' target='_blank' href="https://www.instagram.com/oshe.dubai?igsh=OTBqOXFzd2puMW92">
-                    <div className='flex flex-row gap-1 bg-black rounded-2xl p-7 w-full justify-center items-start'>
+                <a className='w-full' target='_blank' href="https://www.instagram.com/oshe.dubai?igsh=OTBqOXFzd2puMW92">
+                    <div className='flex flex-row gap-1 bg-black rounded-2xl p-4 w-full justify-center items-start'>
                         <XIcon sx={{color: 'white'}} />
                         <p className='text-white'>Twitter</p>
                     </div>

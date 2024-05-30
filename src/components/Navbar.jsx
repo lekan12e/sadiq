@@ -44,7 +44,7 @@ function Navbar() {
           />
         </div>
         <div className='flex items-center justify-center'>
-          <img src={Profile} className='w-[24px]' alt="profile-logo" />
+          <img src={Profile} className=' mb-3 w-[24px]' alt="profile-logo" />
         </div>
       </nav>
       <div className="search-results mt-2 px-4 sm:px-8">
