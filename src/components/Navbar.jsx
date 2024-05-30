@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AppleIcon from '../assets/apple_icon.png';
 import Profile from '../assets/profile.png';
 import { Apple, SamsungData, JBLData } from '../data/data'; // Adjust the import path if necessary
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [searchInput, setSearchInput] = useState('');
@@ -29,7 +30,9 @@ function Navbar() {
     <div>
       <nav className='flex flex-row sm:flex-row justify-between items-center h-auto sm:h-[40px] mt-9 px-4 sm:px-8'>
         <div className='flex items-center justify-center mb-4 sm:mb-0'>
-          <img src={AppleIcon} className='w-[24px]' alt="apple-logo" />
+          <Link to="/">
+            <img src={AppleIcon} className='w-[24px]' alt="apple-logo" />
+          </Link>
         </div>
         <div className='flex flex-1 items-center h-full justify-center mb-4 sm:mb-0'>
           <input

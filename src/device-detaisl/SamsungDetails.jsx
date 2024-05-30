@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { SamsungData } from '../data/data';
 import Navbar from '../components/Navbar';
 import CloseIcon from '@mui/icons-material/Close';
@@ -8,10 +8,15 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
 
 const SamsungDetails = () => {
-  const { id } = useParams()
-  console.log(id)
-  const device = SamsungData.find(device => device.id === parseInt(id));
+  const location = useLocation();
+  const [device, setDevice] = useState(null);
   const [showPopup, setShowPopup] = useState(false);  // State to manage popup visibility
+
+  useEffect(() => {
+    const id = location.pathname.split('/').pop();
+    const foundDevice = SamsungData.find(device => device.id === parseInt(id));
+    setDevice(foundDevice);
+  }, [location.pathname]);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);  // Toggle the visibility
@@ -21,12 +26,17 @@ const SamsungDetails = () => {
     return <h1 className=' flex h-[100vh] text-xl w-full justify-center items-center uppercase tracking-wider font-bold'>Device not found</h1>;
   }
 
+  // Construct the WhatsApp message
+  const message = `Hello, I am interested in buying the ${device.spec.ram} ${device.spec.chipset} ${device.name}.`;
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappUrl = `https://wa.me/2349094029999?text=${encodedMessage}`;
+
   return (
     <div className=' mx-[100px] font-switzer'>
       <Navbar />
       <div className='flex justify-start gap-6 pt-20'>
         <div className='flex justify-center items-center h-[357px] w-[390px] bg-[#EFEFEF]'>
-            <img className='w-[261px]' src={device.url} alt="" />
+            <img className='w-[261px]' src={device.url} alt={device.name} />
         </div>
         <div className='flex flex-col w-[350px] leading-[25px] text-start py-[17px] justify-between '>
             <div>
@@ -45,7 +55,7 @@ const SamsungDetails = () => {
             <CloseIcon sx={{cursor: 'pointer', width:'24px', position: 'absolute', top: '8px', right: '5px'}} onClick={togglePopup} />
             <div className='flex flex-col w-[350px] justify-self-center items-center'>
                 <h4 className=' mb-11 font-bold'>Contact us</h4>
-                <a className='mb-6 w-full' target='_blank' href="https://wa.me/2349094029999">
+                <a className='mb-6 w-full' target='_blank' href={whatsappUrl}>
                     <div className='flex flex-row gap-1 bg-green-600 rounded-2xl p-7 w-full justify-center items-start'>
                         <WhatsAppIcon sx={{color: 'white'}} />
                         <p className='text-white'>WhatsApp</p>
