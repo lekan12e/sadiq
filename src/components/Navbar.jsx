@@ -3,10 +3,12 @@ import AppleIcon from '../assets/apple_icon.png';
 import Profile from '../assets/profile.png';
 import { Apple, SamsungData, JBLData } from '../data/data'; // Adjust the import path if necessary
 import { Link } from 'react-router-dom';
+import { mockAuth } from '../auth/mockAuth';
 
 function Navbar() {
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   // Combine all data sets into a single array
   const combinedData = [...Apple, ...SamsungData, ...JBLData];
@@ -26,6 +28,15 @@ function Navbar() {
     setSearchInput(event.target.value);
   };
 
+  const handleProfileClick = () => {
+    setIsPopupVisible(!isPopupVisible);
+  };
+
+  const handleLogout = () => {
+    // Add your logout logic here
+    console.log('Logged out'); // Placeholder for logout logic
+  };
+
   return (
     <div>
       <nav className='flex flex-row sm:flex-row justify-between items-center h-auto sm:h-[40px] mt-9 px-4 sm:px-8'>
@@ -43,8 +54,27 @@ function Navbar() {
             onChange={handleInputChange}
           />
         </div>
-        <div className='flex items-center justify-center'>
-          <img src={Profile} className=' mb-3 w-[24px]' alt="profile-logo" />
+        <div className='relative'>
+          <img
+            src={Profile}
+            className='mb-3 w-[24px] cursor-pointer'
+            alt="profile-logo"
+            onClick={handleProfileClick}
+          />
+          {isPopupVisible && (
+            <div className='absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg'>
+              <div className='p-2'>
+                <Link to="/login">
+                <p className='cursor-pointer hover:bg-gray-100 p-2' onClick={handleLogout}>
+                  Logout
+                </p>
+                </Link>
+                <Link to="/change-password" className='cursor-pointer hover:bg-gray-100 p-2'>
+                  Change Password
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
       <div className="search-results mt-2 px-4 sm:px-8">

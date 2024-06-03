@@ -49,7 +49,7 @@ const SamsungDetails = () => {
         </div>
       </div>
       <div className='mt-24'>
-        <h1 className='font-bold font-switzer  text-[28px]'>
+        <h1 className='font-bold font-switzer text-[28px]'>
           Similar Devices
         </h1>
           <Samsung />
