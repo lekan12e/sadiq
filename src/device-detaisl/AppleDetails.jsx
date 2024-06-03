@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
+import Iphone from '../devices/Iphone';
 
 const AppleDetails = () => {
   const { appleid } = useParams();
@@ -18,14 +19,12 @@ const AppleDetails = () => {
   if (!device) {
     return <h2>Device not found</h2>;
   }
-
-  // Construct the WhatsApp message
   const message = `Hello, I am interested in buying the ${device.spec.chipset} ${device.name}.`;
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/2349094029999?text=${encodedMessage}`;
 
   return (
-    <div className='mx-4 sm:mx-[100px] font-switzer'>
+    <div className=' mx-4 sm:mx-[100px] font-switzer'>
       <Navbar />
       <div className='flex flex-col sm:flex-row gap-6 pt-10 sm:pt-20'>
         <div className='flex justify-center items-center h-[357px] sm:w-[390px] bg-[#EFEFEF]'>
@@ -41,6 +40,12 @@ const AppleDetails = () => {
             <button className='p-5 w-full bg-black rounded-full text-white' onClick={togglePopup}>DM to purchase</button>
         </div>
       </div>
+      <div className='mt-24'>
+        <h1 className='font-bold font-switzer text-[28px]'>
+          Similar Devices
+        </h1>
+          <Iphone />
+        </div>
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-8 sm:p-16 relative rounded-lg shadow-lg w-full sm:max-w-[400px]">

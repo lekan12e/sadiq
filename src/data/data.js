@@ -171,7 +171,7 @@ export const SamsungData = [
                name: "Samsung Galaxy s23 Ultra 5g",
                chipset: "Qualcomm Snapdragon 8 Gen 2",
                memory: "256GB, 512GB",
-               ram: "8GB/12GB"
+               ram: "8GB"
             }
          },
          {

@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
+import Samsung from '../devices/Samsung';
 
 const SamsungDetails = () => {
   const location = useLocation();
@@ -46,6 +47,12 @@ const SamsungDetails = () => {
             </div>
             <button className='p-5 w-full bg-black rounded-full text-white' onClick={togglePopup}>DM to purchase</button>
         </div>
+      </div>
+      <div className='mt-24'>
+        <h1 className='font-bold font-switzer  text-[28px]'>
+          Similar Devices
+        </h1>
+          <Samsung />
       </div>
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
