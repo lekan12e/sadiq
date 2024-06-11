@@ -26,6 +26,7 @@ function Navbar() {
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
+    console.log(event)
   };
 
   const handleProfileClick = () => {

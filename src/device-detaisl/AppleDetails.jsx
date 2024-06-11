@@ -37,7 +37,7 @@ const AppleDetails = () => {
                 <p>CHIPSET: <span className='font-bold'>{device.spec.chipset}</span></p>
                 <p>MEMORY: <span className='font-bold'>{device.spec.memory}</span></p>
             </div>
-            <button className='p-5 w-full bg-black rounded-full text-white' onClick={togglePopup}>DM to purchase</button>
+            <button className='p-5 w-full bg-black rounded-[90px] text-white' onClick={togglePopup}>DM to purchase</button>
         </div>
       </div>
       <div className='mt-24'>

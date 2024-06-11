@@ -203,7 +203,7 @@ export const JBLData = [
             name: "JBL headphones 🎧 720BT"
          },
          {
-            id: 1,
+            id: 4,
             url: "https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwbcc098e0/JBL_XTREME_3__STRAP_BLUE_0040_x1.png?sw=535&sh=535",
             name: "JBL Xtreme 3"
          },

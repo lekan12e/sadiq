@@ -1,16 +1,4 @@
+@import url("https://fonts.cdnfonts.com/css/switzer");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@font-face {
-  font-family: 'Switzer';
-  src: "https://fonts.cdnfonts.com/css/switzer";
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Switzer';
-  src: url('"https://fonts.cdnfonts.com/css/switzer"') format('woff2'),
-       url('/fonts/Switzer-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-}
